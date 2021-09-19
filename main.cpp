@@ -14,16 +14,12 @@ int main() {
           //  std::string bufStr;
           //  getline(notebook,bufStr);
           //  std::cout << bufStr;
-            char buffer[30];
+            char buffer[20];
             notebook.read(buffer, sizeof(buffer));
-            if(notebook.gcount() == sizeof(buffer)){
-                std::cout << buffer;
-            } else{
-                for(int i = 0; i < notebook.gcount(); i++){
-                    std::cout << buffer[i];
-                }
-
+            if(notebook.gcount() < sizeof(buffer)){
+                buffer[notebook.gcount()] = 0;
             }
+            std::cout << buffer;
 
         }
         notebook.close();
